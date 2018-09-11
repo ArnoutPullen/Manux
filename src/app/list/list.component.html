@@ -1,0 +1,14 @@
+<mat-list>
+  <h3 mat-subheader>Folders</h3>
+  <mat-list-item *ngFor="let folder of folders" (click)="changeFolder(folder)">
+    <mat-icon mat-list-icon>folder</mat-icon>
+    <h4 mat-line>{{folder.name}}</h4>
+  </mat-list-item>
+  <mat-divider></mat-divider>
+  <h3 mat-subheader>Files</h3>
+  <mat-list-item *ngFor="let file of files">
+    <mat-icon mat-list-icon>note</mat-icon>
+    <h4 mat-line>{{file.name}}</h4>
+  </mat-list-item>
+</mat-list>
+{{currentPath}}
