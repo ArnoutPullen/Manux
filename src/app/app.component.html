@@ -1,1 +1,15 @@
-<app-list></app-list>
+<mat-sidenav-container class="example-container" (backdropClick)="sidenav.close()">
+  <mat-sidenav #sidenav (keydown.escape)="sidenav.close()" disableClose>
+    <p><button mat-button (click)="sidenav.close()">Toggle</button></p>
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <mat-toolbar color="primary">
+      <button mat-icon-button (click)="sidenav.open()">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <span class="toolbar-title">{{title}}</span>
+    </mat-toolbar>
+    <app-list></app-list>
+  </mat-sidenav-content>
+</mat-sidenav-container>
