@@ -1,0 +1,9 @@
+.app-container {
+    min-height: 100vh;
+}
+.app-sidenav {
+    min-width: 20vw;
+}
+.app-nav-icon {
+    margin-right: .5em;
+}
