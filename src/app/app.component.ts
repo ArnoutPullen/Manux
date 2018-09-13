@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Routes } from './app.routes';
 
 @Component({
     selector: 'app-root',
@@ -8,4 +9,5 @@ import { Component } from '@angular/core';
 export class AppComponent {
     title = 'Manux';
     opened: boolean;
+    routes = Routes;
 }

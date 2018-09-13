@@ -1,6 +1,11 @@
-<mat-sidenav-container class="example-container" (backdropClick)="sidenav.close()">
-  <mat-sidenav #sidenav (keydown.escape)="sidenav.close()" disableClose>
-    <p><button mat-button (click)="sidenav.close()">Toggle</button></p>
+<mat-sidenav-container class="app-container" (backdropClick)="sidenav.close()">
+  <mat-sidenav #sidenav (keydown.escape)="sidenav.close()" class="app-sidenav" disableClose>
+    <mat-nav-list class="app-nav">
+      <base href="/">
+      <a mat-list-item *ngFor="let route of routes" class="app-nav-item" routerLink="{{route.path}}" (click)="sidenav.close()">
+        <mat-icon *ngIf="route.icon" class="app-nav-icon">{{route.icon}}</mat-icon><span class="app-nav-title">{{route.title}}</span>
+      </a>
+    </mat-nav-list>
   </mat-sidenav>
 
   <mat-sidenav-content>
@@ -10,6 +15,6 @@
       </button>
       <span class="toolbar-title">{{title}}</span>
     </mat-toolbar>
-    <app-list></app-list>
+    <router-outlet></router-outlet>
   </mat-sidenav-content>
 </mat-sidenav-container>
