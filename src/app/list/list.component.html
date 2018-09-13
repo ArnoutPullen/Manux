@@ -1,14 +1,23 @@
+<div class="path">
+  <mat-icon mat-list-icon (click)="rootFolder()" *ngIf="currentPath != '/'">home</mat-icon>
+  <div *ngFor="let folder of currentFolders">
+    <span class="path-divder" *ngIf="folder">/</span><span class="folder" (click)="changeFolder(folder)" *ngIf="folder">{{folder}}</span>
+  </div>
+</div>
 <mat-list>
-  <h3 mat-subheader>Folders</h3>
-  <mat-list-item *ngFor="let folder of folders" (click)="changeFolder(folder)">
+  <h3 mat-subheader *ngIf="folders?.length > 0 || currentPath != '/'">Folders</h3>
+  <mat-list-item *ngIf="currentPath != '/'" (click)="previousFolder()">
+    <mat-icon mat-list-icon>folder</mat-icon>
+    <h4 mat-line>../</h4>
+  </mat-list-item>
+  <mat-list-item *ngFor="let folder of folders" (click)="nextFolder(folder)">
     <mat-icon mat-list-icon>folder</mat-icon>
     <h4 mat-line>{{folder.name}}</h4>
   </mat-list-item>
-  <mat-divider></mat-divider>
-  <h3 mat-subheader>Files</h3>
+  <mat-divider *ngIf="folders?.length > 0 && files?.length > 0 || currentPath != '/'"></mat-divider>
+  <h3 mat-subheader *ngIf="files?.length > 0">Files</h3>
   <mat-list-item *ngFor="let file of files">
     <mat-icon mat-list-icon>note</mat-icon>
     <h4 mat-line>{{file.name}}</h4>
   </mat-list-item>
 </mat-list>
-{{currentPath}}

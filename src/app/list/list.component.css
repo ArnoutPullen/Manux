@@ -1,0 +1,7 @@
+.path {
+    display: flex;
+    flex-direction: row;
+}
+.path-divder {
+    margin: 0 .5em;
+}
