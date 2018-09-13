@@ -1,5 +1,5 @@
 <div class="path">
-  <mat-icon mat-list-icon (click)="rootFolder()" *ngIf="currentPath != '/'">home</mat-icon>
+  <mat-icon mat-list-icon (click)="rootFolder()">home</mat-icon>
   <div *ngFor="let folder of currentFolders">
     <span class="path-divder" *ngIf="folder">/</span><span class="folder" (click)="changeFolder(folder)" *ngIf="folder">{{folder}}</span>
   </div>
