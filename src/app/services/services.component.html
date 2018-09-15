@@ -1,5 +1,5 @@
 <div class="mat-content services">
     <div *ngFor="let service of services" class="service">
-        <mat-slide-toggle [checked]="service.activated">{{service.name}}</mat-slide-toggle>
-    </div>    
+        <mat-slide-toggle [checked]="service.activated" [disabled]="disableToggle" (change)="toggleService(service)">{{service.name}}</mat-slide-toggle>
+    </div>
 </div>

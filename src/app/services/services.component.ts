@@ -11,8 +11,43 @@ import { IData } from '../core/IData';
 export class ServicesComponent implements OnInit {
 
     services: Service[] = [];
+    disableToggle: boolean;
 
-    constructor(private serviceService: ServicesService) { }
+    constructor(private serviceService: ServicesService) {
+        this.disableToggle = false;
+    }
+
+    startService(service: Service) {
+        this.disableToggle = true;
+        console.log('stop service: ' + service);
+        this.serviceService.startService(service).subscribe((data: IData) => {
+            console.log(data);
+            if (data.error == null && data.response.length >= 1) {
+                this.disableToggle = false;
+                console.log('service started: ' + service.name);
+            }
+        });
+    }
+
+    stopService(service: Service) {
+        this.disableToggle = true;
+        console.log('stop service: ' + service);
+        this.serviceService.stopService(service).subscribe((data: IData) => {
+            console.log(data);
+            if (data.error == null && data.response.length >= 1) {
+                this.disableToggle = false;
+                console.log('service stopped' + service.name);
+            }
+        });
+    }
+
+    toggleService(service: Service) {
+        if (service.activated) {
+            this.stopService(service);
+        } else {
+            this.startService(service);
+        }
+    }
 
     ngOnInit() {
         this.serviceService.getAll().subscribe((data: IData) => {
@@ -24,10 +59,8 @@ export class ServicesComponent implements OnInit {
                 data.response.forEach((value: string, key: string) => {
                     if (value) {
                         if (value.startsWith(activated)) {
-                            value = value.replace(activated, '');
                             services.push(new Service({ id: key, name: value.replace(activated, ''), activated: true }));
                         } else if (value.startsWith(disabled)) {
-                            value = value.replace(disabled, '');
                             services.push(new Service({ id: key, name: value.replace(disabled, ''), activated: false }));
                         }
                     }
