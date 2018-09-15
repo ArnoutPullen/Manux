@@ -9,11 +9,14 @@ import { AppComponent } from './app.component';
 import { ListComponent } from './list/list.component';
 import { FileService } from './list/list.service';
 import { Routes } from './app.routes';
+import { ServicesComponent } from './services/services.component';
+import { ServicesService } from './services/services.service';
 
 @NgModule({
     declarations: [
         AppComponent,
-        ListComponent
+        ListComponent,
+        ServicesComponent
     ],
     imports: [
         BrowserModule,
@@ -22,7 +25,7 @@ import { Routes } from './app.routes';
         HttpClientModule,
         RouterModule.forRoot(Routes)
     ],
-    providers: [FileService],
+    providers: [FileService, ServicesService],
     bootstrap: [AppComponent]
 })
 export class AppModule { }
