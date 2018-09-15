@@ -1,0 +1,6 @@
+.services .service {
+    margin-bottom: .5em;
+}
+.services .service:last-child {
+    margin-bottom: 0;
+}
