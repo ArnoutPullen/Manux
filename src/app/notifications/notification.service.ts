@@ -7,9 +7,10 @@ export class NotificationService {
     constructor(private snackBar: MatSnackBar) {
     }
 
-    notification(message: string, action?: string) {
+    send(message: string, action: string = null) {
+        console.log(action);
         this.snackBar.open(message, action, {
-            duration: 3000,
+            duration: 5000,
         });
     }
 }
