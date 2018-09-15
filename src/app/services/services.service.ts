@@ -25,4 +25,8 @@ export class ServicesService {
     stopService(service: Service) {
         return this.httpClient.get(Config.Api.BaseUrl + this.prefix + '/' +  service.name + '/stop');
     }
+    // http://localhost:3000/api/services/ID/restart
+    restartService(service: Service) {
+        return this.httpClient.get(Config.Api.BaseUrl + this.prefix + '/' +  service.name + '/restart');
+    }
 }

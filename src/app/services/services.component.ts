@@ -62,6 +62,27 @@ export class ServicesComponent implements OnInit {
         });
     }
 
+    restartService(service: Service) {
+        this.disableToggle = true;
+        console.log('Restarting service: ' + service.name + '...');
+        this.serviceService.restartService(service).subscribe((data: IData) => {
+            // console.log(data);
+            if (data.error) {
+                this.notificationService.send('Error occurred while restarting service: ' + service.name);
+            }
+            if (data.response) {
+                if (data.response.length >= 1) {
+                    this.disableToggle = false;
+                    this.notificationService.send('Service ' + service.name + ' restarted.');
+                }
+            } else {
+                this.notificationService.send('Error something went wrong');
+            }
+        }, (error: any) => {
+            console.log(error);
+        });
+    }
+
     toggleService(service: Service) {
         if (service.activated) {
             this.stopService(service);

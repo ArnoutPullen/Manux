@@ -1,5 +1,8 @@
 <div class="mat-content services">
-    <div *ngFor="let service of services" class="service">
-        <mat-slide-toggle [checked]="service.activated" [disabled]="disableToggle" (change)="toggleService(service)">{{service.name}}</mat-slide-toggle>
-    </div>
+  <div *ngFor="let service of services" class="service">
+    <mat-slide-toggle [checked]="service.activated" [disabled]="disableToggle" (change)="toggleService(service)">
+      <span class="service-name">{{service.name}}</span> 
+      <button mat-icon-button (click)="restartService(service)" class="service-icon"><mat-icon>autorenew</mat-icon></button>
+    </mat-slide-toggle>
+  </div>
 </div>
