@@ -2,12 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FileService } from './list.service';
 import { Folder } from './list.folder';
 import { File } from './list.file';
-
-interface IData {
-    error: any;
-    outputError: any;
-    response: any;
-}
+import { IData } from '../core/IData';
 
 @Component({
     selector: 'app-list',

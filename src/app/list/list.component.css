@@ -1,6 +1,7 @@
 .path {
     display: flex;
     flex-direction: row;
+    margin: 1em;
 }
 .path-divder {
     margin: 0 .5em;

@@ -1,9 +1,7 @@
 import { Folder } from './list.folder';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable } from 'rxjs';
 import { Config } from '../app.config';
 import { Injectable } from '@angular/core';
-import { Service } from '../core/Service';
 
 @Injectable()
 export class FileService {
