@@ -11,6 +11,7 @@ import { FileService } from './list/list.service';
 import { Routes } from './app.routes';
 import { ServicesComponent } from './services/services.component';
 import { ServicesService } from './services/services.service';
+import { NotificationService } from './notifications/notification.service';
 
 @NgModule({
     declarations: [
@@ -25,7 +26,7 @@ import { ServicesService } from './services/services.service';
         HttpClientModule,
         RouterModule.forRoot(Routes)
     ],
-    providers: [FileService, ServicesService],
+    providers: [FileService, ServicesService, NotificationService],
     bootstrap: [AppComponent]
 })
 export class AppModule { }
