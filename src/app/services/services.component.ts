@@ -21,20 +21,20 @@ export class ServicesComponent implements OnInit {
 
     startService(service: Service) {
         this.disableToggle = true;
-        console.log('starting service: ' + service.name + '...');
+        this.notificationService.error('Starting service: ' + service.name + '...');
         this.serviceService.startService(service).subscribe((data: IData) => {
             // console.log(data);
             if (data.error) {
-                this.notificationService.send('Error occurred while stopping service: ' + service.name);
+                this.notificationService.error('Error occurred while stopping service: ' + service.name);
             }
             if (data.response) {
                 if (data.response.length >= 1) {
                     this.disableToggle = false;
                     this.services[service.id].activated = true;
-                    this.notificationService.send('Service ' + service.name + ' started.');
+                    this.notificationService.success('Service ' + service.name + ' started.');
                 }
             } else {
-                this.notificationService.send('Error something went wrong');
+                this.notificationService.error('Error something went wrong');
             }
         }, (error: any) => {
             console.log(error);
@@ -43,19 +43,19 @@ export class ServicesComponent implements OnInit {
 
     stopService(service: Service) {
         this.disableToggle = true;
-        console.log('stopping service: ' + service.name + '...');
+        this.notificationService.error('Stopping service: ' + service.name + '...');
         this.serviceService.stopService(service).subscribe((data: IData) => {
             // console.log(data);
             if (data.error) {
-                this.notificationService.send('Error occurred while stopping service: ' + service.name);
+                this.notificationService.error('Error occurred while stopping service: ' + service.name);
             }
             if (data.response) {
                 if (data.response.length >= 1) {
                     this.disableToggle = false;
-                    this.notificationService.send('Service ' + service.name + ' stopped.');
+                    this.notificationService.success('Service ' + service.name + ' stopped.');
                 }
             } else {
-                this.notificationService.send('Error something went wrong');
+                this.notificationService.error('Error something went wrong');
             }
         }, (error: any) => {
             console.log(error);
@@ -64,19 +64,19 @@ export class ServicesComponent implements OnInit {
 
     restartService(service: Service) {
         this.disableToggle = true;
-        console.log('Restarting service: ' + service.name + '...');
+        this.notificationService.error('Restarting service: ' + service.name + '...');
         this.serviceService.restartService(service).subscribe((data: IData) => {
             // console.log(data);
             if (data.error) {
-                this.notificationService.send('Error occurred while restarting service: ' + service.name);
+                this.notificationService.error('Error occurred while restarting service: ' + service.name);
             }
             if (data.response) {
                 if (data.response.length >= 1) {
                     this.disableToggle = false;
-                    this.notificationService.send('Service ' + service.name + ' restarted.');
+                    this.notificationService.success('Service ' + service.name + ' restarted.');
                 }
             } else {
-                this.notificationService.send('Error something went wrong');
+                this.notificationService.error('Error something went wrong');
             }
         }, (error: any) => {
             console.log(error);
